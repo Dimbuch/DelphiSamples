@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BFC99332-CD58-42FA-8554-31DD58BB0A19}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Отображение иконок файлов\FilesIcons.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PropStore\PropertyStore.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FilesIcons">
+        <MSBuild Projects="Отображение иконок файлов\FilesIcons.dproj"/>
+    </Target>
+    <Target Name="FilesIcons:Clean">
+        <MSBuild Projects="Отображение иконок файлов\FilesIcons.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FilesIcons:Make">
+        <MSBuild Projects="Отображение иконок файлов\FilesIcons.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PropertyStore">
+        <MSBuild Projects="PropStore\PropertyStore.dproj"/>
+    </Target>
+    <Target Name="PropertyStore:Clean">
+        <MSBuild Projects="PropStore\PropertyStore.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PropertyStore:Make">
+        <MSBuild Projects="PropStore\PropertyStore.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FilesIcons;PropertyStore"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FilesIcons:Clean;PropertyStore:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FilesIcons:Make;PropertyStore:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

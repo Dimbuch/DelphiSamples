@@ -1,14 +1,15 @@
-program Project1;
+program FilesIcons;
 
 uses
-  Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  Vcl.Forms,
+  unMain in 'unMain.pas' {Form1};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.Title := 'Отображение системных иконок файлов';
   Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
